@@ -4,10 +4,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using SOTS.Void;
+using SOTS.Items.Pyramid;
+using SOTS.Items.Void;
 
 namespace TheBereftSouls.Content.Items.Accessories.Enchantment
 {
-    public class FrigidVoidEnchantment : ModItem
+    public class CursedMatterEnchantment : ModItem
     {
         public override void SetDefaults()
         {
@@ -27,20 +29,24 @@ namespace TheBereftSouls.Content.Items.Accessories.Enchantment
             //player.iceSkate = true;
             //player.moveSpeed += 0.1f;
             //player.GetDamage<VoidGeneric>() -= 0.15f;
-        }
-        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            target.AddBuff(BuffID.Frostburn, 30 * 60); //this needs to be changed so it only applies on void damage
+            VoidPlayer voidPlayer = VoidPlayer.ModPlayer(player);
+            SOTSPlayer modPlayer = SOTSPlayer.ModPlayer(player);
+            //player.GetDamage<VoidGeneric>() += 0.10f;
+            voidPlayer.voidCost -= 0.15f;
+            player.manaCost -= 0.15f;
+            voidPlayer.voidMeterMax2 += 80;
+            player.statManaMax2 += 80;
+            modPlayer.RubyMonolith = true;
+            modPlayer.RubyMonolithIsNOTVanity = true;
         }
         public override void AddRecipes()
         {
             CreateRecipe(1)
-                .AddIngredient<FrigidCrown>()
-                .AddIngredient<FrigidRobe>()
-                .AddIngredient<FrigidGreaves>()
-                .AddIngredient<ShatterShardChestplate>()
-                .AddIngredient<ShatterBlade>()
-                .AddIngredient<FrigidBar>(3)
+                .AddIngredient<CursedHood>()
+                .AddIngredient<CursedRobe>()
+                .AddIngredient<VoidenBracelet>()
+                .AddIngredient<VoidenAnkh>()
+                .AddIngredient<CursedMatter>(3)
                 .AddTile(TileID.DemonAltar).Register();
         }
     }
