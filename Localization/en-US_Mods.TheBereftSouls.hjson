@@ -5,7 +5,16 @@ Items: {
 	}
 
 	FrigidVoidEnchantment: {
-		Tooltip: ""
+		Tooltip:
+			'''
+			Getting hit surrounds you with ice shards
+			Void attacks inflict Frostburn
+			Grants +2 HP/s life regeneration
+			Grants Ice Skates effect 
+			Grants immunity to Chilled, Frozen and Frostburn
+			10% increased movement speed 
+			10% increased void attack speed
+			'''
 		DisplayName: Frigid Void Enchantment
 	}
 
